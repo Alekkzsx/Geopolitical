@@ -1,9 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://db7p3sc478s1t"]
+[gd_scene load_steps=12 format=3 uid="uid://db7p3sc478s1t"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_root"]
 [ext_resource type="Script" path="res://scripts/MapManager2D.gd" id="2_mapmanager"]
 [ext_resource type="Script" path="res://scripts/MapRenderer.gd" id="3_maprenderer"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="4_hud"]
+[ext_resource type="Shader" path="res://shaders/tactical_post_process.gdshader" id="5_post"]
+
+[sub_resource type="Environment" id="Environment_glow"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+glow_strength = 1.0
+glow_bloom = 0.1
+glow_blend_mode = 0
+glow_hdr_threshold = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header"]
 bg_color = Color(0, 0, 0, 0.8)
@@ -13,6 +23,14 @@ border_color = Color(0, 0.5, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toolbar"]
 bg_color = Color(0, 0, 0, 0.8)
 border_width_top = 2
+border_color = Color(0, 0.5, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_portrait"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(0, 0.5, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_country"]
@@ -27,22 +45,11 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_portrait"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.5, 1, 1)
-
-[sub_resource type="Environment" id="Environment_glow"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 0.5
-glow_strength = 1.0
-glow_bloom = 0.1
-glow_blend_mode = 0
-glow_hdr_threshold = 1.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_postprocess"]
+shader = ExtResource("5_post")
+shader_parameter/cold_tint = 0.25
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/scanline_opacity = 0.05
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_root")
@@ -166,3 +173,13 @@ offset_top = 50.0
 offset_right = 290.0
 offset_bottom = 180.0
 text = "Dados estratégicos..."
+
+[node name="PostProcessLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="ShaderRect" type="ColorRect" parent="PostProcessLayer"]
+material = SubResource("ShaderMaterial_postprocess")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2

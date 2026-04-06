@@ -1,0 +1,4 @@
+res://scripts/MapManager2D.gd
+res://scripts/MapRenderer.gd
+res://scripts/Main.gd
+res://scripts/GeoJSONParser.gd
