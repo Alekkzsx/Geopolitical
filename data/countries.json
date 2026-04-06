@@ -1,0 +1,74 @@
+{
+  "USA": {
+	"name": "United States",
+	"gdp": 26.9,
+	"population": 339,
+	"stability": 85,
+	"popularity": 55,
+	"military_power": 98,
+	"inflation": 3.2,
+	"debt_ratio": 122,
+	"growth": 2.1,
+	"coord": {"lat": 37.09, "lon": -95.71}
+  },
+  "CHN": {
+	"name": "China",
+	"gdp": 17.7,
+	"population": 1412,
+	"stability": 92,
+	"popularity": 70,
+	"military_power": 94,
+	"inflation": 0.7,
+	"debt_ratio": 77,
+	"growth": 5.2,
+	"coord": {"lat": 35.86, "lon": 104.19}
+  },
+  "BRA": {
+	"name": "Brazil",
+	"gdp": 2.1,
+	"population": 214,
+	"stability": 70,
+	"popularity": 48,
+	"military_power": 65,
+	"inflation": 4.5,
+	"debt_ratio": 72,
+	"growth": 2.9,
+	"coord": {"lat": -14.23, "lon": -51.92}
+  },
+  "RUS": {
+	"name": "Russia",
+	"gdp": 2.2,
+	"population": 144,
+	"stability": 80,
+	"popularity": 65,
+	"military_power": 92,
+	"inflation": 7.4,
+	"debt_ratio": 17,
+	"growth": 1.1,
+	"coord": {"lat": 61.52, "lon": 105.31}
+  },
+  "GBR": {
+	"name": "United Kingdom",
+	"gdp": 3.1,
+	"population": 67,
+	"stability": 82,
+	"popularity": 42,
+	"military_power": 88,
+	"inflation": 3.9,
+	"debt_ratio": 102,
+	"growth": 0.5,
+	"coord": {"lat": 55.37, "lon": -3.43}
+  },
+  "DEU": {
+	"name": "Germany",
+	"gdp": 4.3,
+	"population": 83,
+	"stability": 88,
+	"popularity": 45,
+	"military_power": 75,
+	"inflation": 3.7,
+	"debt_ratio": 66,
+	"growth": -0.3,
+	"coord": {"lat": 51.16, "lon": 10.45}
+  }
+}
