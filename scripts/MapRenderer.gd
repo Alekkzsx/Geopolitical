@@ -7,7 +7,7 @@ const CountryLabelScript = preload("res://scripts/CountryLabel.gd")
 var parser = GeoJSONParser.new()
 
 # Pro Strategic Palette
-const COLOR_OCEAN_FALLBACK = Color(0.01, 0.02, 0.05, 1.0) # Very dark blue
+const COLOR_OCEAN_FALLBACK = Color(0.01, 0.02, 0.05, 1.0)
 const COLOR_PLAYER = Color(0.0, 0.5, 1.0, 0.3)
 const COLOR_OTHERS = Color(0.0, 0.0, 0.0, 0.0)
 const COLOR_BORDER = Color(0.0, 0.6, 1.0, 1.0)
@@ -29,7 +29,6 @@ func _ready():
 	generate_world_map()
 
 func _setup_background():
-	# 1. Fallback ColorRect (To prevent pure white screen if texture fails)
 	var fallback = ColorRect.new()
 	fallback.name = "ColorFallback"
 	fallback.color = COLOR_OCEAN_FALLBACK
@@ -39,7 +38,6 @@ func _setup_background():
 	fallback.offset_bottom = 6000
 	add_child(fallback)
 	
-	# 2. Satellite World Background
 	var sprite = Sprite2D.new()
 	sprite.name = "SatelliteBackground"
 	var texture = load("res://assets/maps/satellite_world.jpg")
@@ -47,15 +45,11 @@ func _setup_background():
 		sprite.texture = texture
 		var target_scale = (360.0 * 10.0) / texture.get_width()
 		sprite.scale = Vector2(target_scale, target_scale)
-	else:
-		push_error("MapRenderer: Failed to load satellite_world.jpg")
 	add_child(sprite)
 
 func generate_world_map():
 	var world_data = parser.load_world_map("res://data/world_map.geojson")
-	if world_data.is_empty():
-		push_error("MapRenderer: Failed to parse geojson data.")
-		return
+	if world_data.is_empty(): return
 	
 	for id in world_data:
 		_render_country(id, world_data[id])
@@ -67,17 +61,14 @@ func _render_country(id: String, country_info: Dictionary):
 	country_node.name = id
 	add_child(country_node)
 	
-	var base_fill = COLOR_OTHERS
-	var b_color = COLOR_BORDER.darkened(0.5)
-	
-	if id == "BRA":
-		base_fill = COLOR_PLAYER
-		b_color = COLOR_BORDER
+	var is_player = (id == WorldManager.player_country_id)
+	var base_fill = COLOR_PLAYER if is_player else COLOR_OTHERS
+	var b_color = COLOR_BORDER if is_player else COLOR_BORDER.darkened(0.5)
 	
 	var mat = ShaderMaterial.new()
 	mat.shader = BorderShader
 	mat.set_shader_parameter("border_color", b_color)
-	mat.set_shader_parameter("glow_intensity", 2.0 if id == "BRA" else 1.1)
+	mat.set_shader_parameter("glow_intensity", 2.0 if is_player else 1.1)
 	
 	for points in country_info.polygons:
 		var poly = Polygon2D.new()
@@ -100,7 +91,6 @@ func _render_country(id: String, country_info: Dictionary):
 		country_node.add_child(border)
 		poly.add_child(area)
 		
-		# Connect SIGNALS using CALLABLES (Godot 4)
 		area.input_event.connect(_on_country_input.bind(id))
 		area.mouse_entered.connect(_on_country_hover.bind(country_node, true))
 		area.mouse_exited.connect(_on_country_hover.bind(country_node, false))
@@ -113,7 +103,7 @@ func _add_country_label(id: String, country_info: Dictionary):
 	label.set_script(CountryLabelScript)
 	label.name = "Label_" + id
 	label.position = country_info.centroid
-	label.z_index = 10
+	label.z_index = 20
 	add_child(label)
 
 func _render_capitals():
@@ -133,6 +123,7 @@ func _render_capitals():
 		marker.color = COLOR_CITY
 		marker.position = Vector2(city.lon * 10.0, -city.lat * 10.0)
 		marker.scale = Vector2(0.3, 0.3)
+		marker.z_index = 15
 		layer.add_child(marker)
 
 func _on_country_input(_viewport, event, _shape_idx, id):
@@ -140,8 +131,9 @@ func _on_country_input(_viewport, event, _shape_idx, id):
 		WorldManager.select_country(id)
 
 func _on_country_hover(node, entering):
+	var is_player = (node.name == WorldManager.player_country_id)
 	for child in node.get_children():
 		if child is Polygon2D:
-			child.color.a = 0.6 if entering else (0.4 if node.name == "BRA" else 0.0)
+			child.color.a = 0.6 if entering else (0.4 if is_player else 0.0)
 		if child is Line2D:
 			child.width = 2.5 if entering else 1.2
