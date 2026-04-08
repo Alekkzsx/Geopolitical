@@ -1,0 +1,157 @@
+{
+  "USA": {
+    "blocs": ["G7", "NATO", "USMCA", "AUKUS"],
+    "partners": ["GBR", "CAN", "AUS", "JPN", "KOR", "ISR", "POL", "DEU", "FRA", "MEX"],
+    "rivals": ["CHN", "RUS", "IRN", "PRK"]
+  },
+  "CAN": {
+    "blocs": ["G7", "NATO", "USMCA"],
+    "partners": ["USA", "GBR", "FRA", "DEU"],
+    "rivals": ["RUS"]
+  },
+  "MEX": {
+    "blocs": ["USMCA"],
+    "partners": ["USA", "CAN"],
+    "rivals": []
+  },
+  "GBR": {
+    "blocs": ["G7", "NATO", "AUKUS"],
+    "partners": ["USA", "CAN", "AUS", "POL", "DEU", "FRA", "JPN"],
+    "rivals": ["RUS", "IRN"]
+  },
+  "FRA": {
+    "blocs": ["G7", "EU", "NATO"],
+    "partners": ["DEU", "USA", "GBR", "ITA", "ESP"],
+    "rivals": ["RUS"]
+  },
+  "DEU": {
+    "blocs": ["G7", "EU", "NATO"],
+    "partners": ["FRA", "USA", "GBR", "POL", "ITA"],
+    "rivals": ["RUS"]
+  },
+  "ITA": {
+    "blocs": ["G7", "EU", "NATO"],
+    "partners": ["DEU", "FRA", "USA", "ESP"],
+    "rivals": ["RUS"]
+  },
+  "ESP": {
+    "blocs": ["EU", "NATO"],
+    "partners": ["FRA", "DEU", "ITA", "USA"],
+    "rivals": []
+  },
+  "POL": {
+    "blocs": ["EU", "NATO"],
+    "partners": ["USA", "GBR", "DEU", "UKR"],
+    "rivals": ["RUS", "BLR"]
+  },
+  "UKR": {
+    "blocs": [],
+    "partners": ["POL", "USA", "GBR", "DEU", "FRA"],
+    "rivals": ["RUS", "BLR"]
+  },
+  "BLR": {
+    "blocs": ["CSTO"],
+    "partners": ["RUS"],
+    "rivals": ["POL", "UKR"]
+  },
+  "RUS": {
+    "blocs": ["BRICS", "CSTO", "SCO"],
+    "partners": ["CHN", "BLR", "IRN", "IND"],
+    "rivals": ["USA", "GBR", "POL", "UKR", "DEU", "FRA", "JPN"]
+  },
+  "CHN": {
+    "blocs": ["BRICS", "SCO"],
+    "partners": ["RUS", "PAK", "IRN", "BRA", "ZAF"],
+    "rivals": ["USA", "JPN", "IND", "AUS"]
+  },
+  "JPN": {
+    "blocs": ["G7"],
+    "partners": ["USA", "AUS", "IND", "KOR", "GBR"],
+    "rivals": ["CHN", "PRK", "RUS"]
+  },
+  "KOR": {
+    "blocs": [],
+    "partners": ["USA", "JPN"],
+    "rivals": ["PRK"]
+  },
+  "PRK": {
+    "blocs": [],
+    "partners": ["CHN", "RUS"],
+    "rivals": ["USA", "KOR", "JPN"]
+  },
+  "AUS": {
+    "blocs": ["AUKUS"],
+    "partners": ["USA", "GBR", "JPN", "NZL"],
+    "rivals": ["CHN"]
+  },
+  "NZL": {
+    "blocs": [],
+    "partners": ["AUS", "USA", "GBR"],
+    "rivals": []
+  },
+  "IND": {
+    "blocs": ["BRICS", "SCO", "QUAD"],
+    "partners": ["USA", "FRA", "JPN", "AUS"],
+    "rivals": ["CHN", "PAK"]
+  },
+  "PAK": {
+    "blocs": ["SCO"],
+    "partners": ["CHN", "TUR"],
+    "rivals": ["IND"]
+  },
+  "TUR": {
+    "blocs": ["NATO"],
+    "partners": ["PAK", "QAT", "AZE", "GBR"],
+    "rivals": ["SYR"]
+  },
+  "IRN": {
+    "blocs": ["SCO"],
+    "partners": ["RUS", "CHN", "SYR"],
+    "rivals": ["USA", "ISR", "SAU"]
+  },
+  "SAU": {
+    "blocs": ["GCC"],
+    "partners": ["ARE", "USA", "EGY"],
+    "rivals": ["IRN"]
+  },
+  "ARE": {
+    "blocs": ["GCC"],
+    "partners": ["SAU", "USA", "IND"],
+    "rivals": ["IRN"]
+  },
+  "QAT": {
+    "blocs": ["GCC"],
+    "partners": ["TUR", "USA"],
+    "rivals": []
+  },
+  "ISR": {
+    "blocs": [],
+    "partners": ["USA", "IND", "DEU", "GBR"],
+    "rivals": ["IRN", "SYR"]
+  },
+  "EGY": {
+    "blocs": [],
+    "partners": ["SAU", "ARE", "USA"],
+    "rivals": []
+  },
+  "BRA": {
+    "blocs": ["BRICS", "MERCOSUR"],
+    "partners": ["ARG", "URY", "CHN", "IND"],
+    "rivals": []
+  },
+  "ARG": {
+    "blocs": ["MERCOSUR"],
+    "partners": ["BRA", "URY"],
+    "rivals": ["GBR"]
+  },
+  "URY": {
+    "blocs": ["MERCOSUR"],
+    "partners": ["BRA", "ARG"],
+    "rivals": []
+  },
+  "ZAF": {
+    "blocs": ["BRICS"],
+    "partners": ["BRA", "IND", "CHN"],
+    "rivals": []
+  }
+}

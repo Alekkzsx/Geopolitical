@@ -1,2 +1,6 @@
-res://scripts/MapRenderer.gd
 res://scripts/HUD.gd
+res://scripts/MapDataLoader.gd
+res://scripts/MapManager2D.gd
+res://scripts/MapRenderer.gd
+res://scripts/WorldManager.gd
+res://scripts/MapModesManager.gd
